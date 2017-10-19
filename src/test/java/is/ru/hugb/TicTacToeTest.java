@@ -63,4 +63,16 @@ public class TicTacToeTest{
 
         assertTrue(game.gameOver());
     }
+
+    @Test public void testGameIsOverWhenThereIsADiagonalRight(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 2);
+        game.doMove(0, 0);
+        game.doMove(1, 1);
+        game.doMove(0, 1);
+        game.doMove(2, 0);
+
+        assertTrue(game.gameOver());
+    }
 }
