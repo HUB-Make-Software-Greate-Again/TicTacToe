@@ -1,5 +1,6 @@
 package is.ru.hugb;
 
+
 public class TicTacToe{
     private final int EMPTY = 0;
     private final int X = 1;
@@ -23,10 +24,9 @@ public class TicTacToe{
     }
 
     public void doMove(int x, int y){
-        // Assert grid is empty && !gameOver
-        if (x < 0 || y < 0 || x > 2 || y > 2){
-            throw new IllegalArgumentException("Index is out of bounds");
-        }
+        this.checkBoundaries(x, y);
+        this.checkLegalMove(x, y);
+
         this.grid[x][y] = this.player;
 
         this.checkGameOver();
@@ -85,6 +85,18 @@ public class TicTacToe{
                     this.winner = this.player;
                 }
             }
+        }
+    }
+
+    private void checkBoundaries(int x, int y){
+        if (x < 0 || y < 0 || x > 2 || y > 2){
+            throw new IllegalArgumentException("Index is out of bounds");
+        }
+    }
+
+    private void checkLegalMove(int x, int y){
+        if (this.grid[x][y] != this.EMPTY || this.gameOver()){
+            throw new IllegalArgumentException("Fields %d, %d is not empty");
         }
     }
 }

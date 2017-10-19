@@ -132,7 +132,7 @@ public class TicTacToeTest{
         
         game.doMove(0, -1);
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void testIllegalRowAboveTwo(){
         TicTacToe game = new TicTacToe();
@@ -145,5 +145,24 @@ public class TicTacToeTest{
         TicTacToe game = new TicTacToe();
 
         game.doMove(0, 3);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testOverwritePreviousMove(){ 
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 0);
+        game.doMove(0, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCantDoMoveIfGameOver(){
+        TicTacToe game = new TicTacToe();
+        game.doMove(0, 0);
+        game.doMove(0, 1);
+        game.doMove(1, 0);
+        game.doMove(1, 1);
+        game.doMove(2, 0);
+        game.doMove(2, 2);
     }
 }
