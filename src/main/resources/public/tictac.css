@@ -1,0 +1,57 @@
+body {
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 200%;
+    margin-bottom: 0.5em;
+    color: #BFC9CA;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.board {
+    float: right;
+    position: relative;
+    left: -31.2%;
+    font-size: 250%;
+    font-weight: bold;
+    margin-right: 40px;
+    margin-top: 25px;
+}
+
+.board td {
+    height: 120px;
+    text-align: center;
+    vertical-align: middle;
+    width: 120px;
+}
+
+.board #one,
+.board #two {
+    border-right: 2px solid rgb(5, 113, 156);
+    border-bottom: 2px solid rgb(5, 113, 156);
+}
+
+.board #three,
+.board #six {
+    border-bottom: 2px solid rgb(5, 113, 156);
+}
+
+.board #four,
+.board #five {
+    border-right: 2px solid rgb(5, 113, 156);
+    border-bottom: 2px solid rgb(5, 113, 156);
+}
+
+.board #seven,
+.board #eight {
+    border-right: 2px solid rgb(5, 113, 156);
+}
+
+.board td.highlight {
+    background-color: #F5F5F5;
+}
