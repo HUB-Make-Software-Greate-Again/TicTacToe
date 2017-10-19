@@ -35,6 +35,13 @@ public class TicTacToe{
             }
         }
 
+        // Check left dia
+        if (this.grid[0][0] != this.EMPTY){
+            if (this.grid[0][0] == this.grid[1][1] && this.grid[0][0] == this.grid[2][2]){
+                gameover = true;
+            }
+        }
+
         return gameover;
     }
 
