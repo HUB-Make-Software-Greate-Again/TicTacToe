@@ -23,6 +23,10 @@ public class TicTacToe{
     }
 
     public void doMove(int x, int y){
+        // Assert grid is empty && !gameOver
+        if (x < 0 || y < 0 || x > 2 || y > 2){
+            throw new IllegalArgumentException("Index is out of bounds");
+        }
         this.grid[x][y] = this.player;
 
         this.checkGameOver();
