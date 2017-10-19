@@ -26,6 +26,15 @@ public class TicTacToe{
             }
         }
         
+        // Check column winner
+        for (int i = 0; i < 3; ++i){
+            if (this.grid[0][i] != this.EMPTY){
+                if (this.grid[0][i] == this.grid[1][i] && this.grid[0][i] == this.grid[2][i]){
+                    gameover = true;
+                }
+            }
+        }
+
         return gameover;
     }
 
