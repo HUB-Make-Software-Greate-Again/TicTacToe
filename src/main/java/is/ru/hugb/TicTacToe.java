@@ -7,6 +7,7 @@ public class TicTacToe{
 
     private int[][] grid;
     private int player;
+    private int winner;
 
     public TicTacToe(){
         this.grid = new int[3][3];
@@ -22,6 +23,7 @@ public class TicTacToe{
             if (this.grid[i][0] != this.EMPTY){
                 if (this.grid[i][0] == this.grid[i][1] && this.grid[i][0] == this.grid[i][2]){
                     gameover = true;
+                    this.winner = this.grid[i][0];
                 }
             }
         }
@@ -31,6 +33,7 @@ public class TicTacToe{
             if (this.grid[0][i] != this.EMPTY){
                 if (this.grid[0][i] == this.grid[1][i] && this.grid[0][i] == this.grid[2][i]){
                     gameover = true;
+                    this.winner = this.grid[0][i];
                 }
             }
         }
@@ -39,6 +42,7 @@ public class TicTacToe{
         if (this.grid[0][0] != this.EMPTY){
             if (this.grid[0][0] == this.grid[1][1] && this.grid[0][0] == this.grid[2][2]){
                 gameover = true;
+                this.winner = this.grid[0][0];
             }
         }
 
@@ -46,6 +50,7 @@ public class TicTacToe{
         if (this.grid[2][0] != this.EMPTY){
             if (this.grid[0][2] == this.grid[1][1] && this.grid[0][2] == this.grid[2][0]){
                 gameover = true;
+                this.winner = this.grid[0][2];
             }
         }
 
@@ -59,5 +64,9 @@ public class TicTacToe{
         } else {
             this.player = this.X;
         }
+    }
+
+    public int winner(){
+        return this.winner;
     }
 }

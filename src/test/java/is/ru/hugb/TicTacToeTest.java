@@ -75,4 +75,31 @@ public class TicTacToeTest{
 
         assertTrue(game.gameOver());
     }
+
+    @Test public void testWinnerReturnsOneIfPlayerOneWins(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 2);
+        game.doMove(0, 0);
+        game.doMove(1, 1);
+        game.doMove(0, 1);
+        game.doMove(2, 0);
+        game.gameOver();
+
+        assertEquals(game.winner(), 1);
+    }
+
+    @Test public void testWinnerReturnsTwoIfPlayerTwoWins(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 0);
+        game.doMove(1, 0);
+        game.doMove(0, 1);
+        game.doMove(1, 1);
+        game.doMove(2, 2);
+        game.doMove(1, 2);
+        game.gameOver();
+
+        assertEquals(game.winner(), 2);
+    }
 }
