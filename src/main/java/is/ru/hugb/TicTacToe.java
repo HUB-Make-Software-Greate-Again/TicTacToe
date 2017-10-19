@@ -8,4 +8,8 @@ public class TicTacToe{
     public boolean gameOver(){
         return false;
     }
+
+    public void doMove(int x, int y){
+        
+    }
 }

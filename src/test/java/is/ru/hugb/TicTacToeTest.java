@@ -9,4 +9,22 @@ public class TicTacToeTest{
 
         assertFalse(game.gameOver());
     }
+
+    @Test public void DoingASingleMoveIsNotGameOver(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 0);
+
+        assertFalse(game.gameOver());
+    }
+
+    @Test public void DoingThreeMovesInARowIsNotGameOver(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 0);
+        game.doMove(0, 1);
+        game.doMove(0, 2);
+
+        assertFalse(game.gameOver());
+    }
 }
