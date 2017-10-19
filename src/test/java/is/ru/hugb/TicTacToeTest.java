@@ -102,4 +102,10 @@ public class TicTacToeTest{
 
         assertEquals(game.winner(), 2);
     }
+
+    @Test public void testWinnerReturnsZeroIfNoWinner(){
+        TicTacToe game = new TicTacToe();
+
+        assertEquals(game.winner(), 0);
+    }
 }

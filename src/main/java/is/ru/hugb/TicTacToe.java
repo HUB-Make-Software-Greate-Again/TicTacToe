@@ -13,6 +13,7 @@ public class TicTacToe{
         this.grid = new int[3][3];
         
         this.player = this.X;
+        this.winner = this.EMPTY;
     }
 
     public boolean gameOver(){
