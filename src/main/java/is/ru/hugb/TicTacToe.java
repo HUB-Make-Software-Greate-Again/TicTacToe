@@ -27,15 +27,15 @@ public class TicTacToe{
 
         this.checkGameOver();
 
-        if (this.player == this.X){
-            this.player = this.O;
-        } else {
-            this.player = this.X;
-        }
+        this.nextTurn();
     }
 
     public int winner(){
         return this.winner;
+    }
+
+    private void nextTurn(){
+        this.player = (this.player == this.X ? this.O : this.X);
     }
 
     private void checkGameOver(){
