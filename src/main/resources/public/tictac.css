@@ -1,6 +1,7 @@
 body {
     padding: 20px;
     text-align: center;
+    background: rgba(46, 54, 78, 0.945)
 }
 
 h1 {
@@ -30,26 +31,35 @@ p {
     width: 120px;
 }
 
+.board td:hover {
+    background: rgba(219, 218, 218, 0.459);
+    background-image: url("circled1600.png")
+}
+
+.board td:active {
+    background: rgba(202, 117, 117, 0.459);
+}
+
 .board #one,
 .board #two {
-    border-right: 2px solid rgb(5, 113, 156);
-    border-bottom: 2px solid rgb(5, 113, 156);
+    border-right: 2px solid rgb(27, 28, 29);
+    border-bottom: 2px solid rgb(27, 28, 29);
 }
 
 .board #three,
 .board #six {
-    border-bottom: 2px solid rgb(5, 113, 156);
+    border-bottom: 2px solid rgb(27, 28, 29);
 }
 
 .board #four,
 .board #five {
-    border-right: 2px solid rgb(5, 113, 156);
-    border-bottom: 2px solid rgb(5, 113, 156);
+    border-right: 2px solid rgb(27, 28, 29);
+    border-bottom: 2px solid rgb(27, 28, 29);
 }
 
 .board #seven,
 .board #eight {
-    border-right: 2px solid rgb(5, 113, 156);
+    border-right: 2px solid rgb(27, 28, 29);
 }
 
 .board td.highlight {
