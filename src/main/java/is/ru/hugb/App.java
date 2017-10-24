@@ -1,5 +1,6 @@
+package is.ru.hugb;
+
 import static spark.Spark.*;
-import is.ru.hugb.TicTacToe;
 
 public class App
 {
@@ -14,29 +15,30 @@ public class App
                 req.session().attribute(GAME, new TicTacToe());
             }
 
-            int x = Integer.parseInt(req.queryParams("x"));
-            int y = Integer.parseInt(req.queryParams("y"));
+            int x = 0, y = 0;
+
+            try {
+                x = Integer.parseInt(req.queryParams("x"));
+                y = Integer.parseInt(req.queryParams("y"));
+            } catch (Exception e){
+                return String.format("There was an error with the query parameters, expecting x and y as numbers. %s", e.getMessage());
+            }
 
             TicTacToe game = req.session().attribute(GAME);
 
-            // try
-            game.doMove(x, y);
-            // catch, return illegal move response
+            try {
+                game.doMove(x, y);
+            } catch (IllegalArgumentException e){
+                return String.format("Illegal move, %s", e.getMessage());
+            }
 
-            // Return gameover respone
             if (game.gameOver()){
-                return "done";
+                String response = String.format("Game over, winner is %d", game.winner());
+                req.session().attribute(GAME, new TicTacToe());
+                return response;
             } 
 
-            // Return everything's ok response
-            return "foo";
-        });
-
-        post("/reset", (req, res) -> {
-            req.session().attribute(GAME, new TicTacToe());
-
-            res.redirect("/");
-            return res;
+            return "OK";
         });
     }
 }
