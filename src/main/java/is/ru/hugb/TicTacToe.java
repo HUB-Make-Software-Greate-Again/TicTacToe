@@ -96,7 +96,7 @@ public class TicTacToe{
 
     private void checkLegalMove(int x, int y){
         if (this.grid[x][y] != this.EMPTY || this.gameOver()){
-            throw new IllegalArgumentException("Fields %d, %d is not empty");
+            throw new IllegalArgumentException(String.format("Fields %d, %d is not empty", x, y));
         }
     }
 }
