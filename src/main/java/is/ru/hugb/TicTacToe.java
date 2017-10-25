@@ -10,6 +10,7 @@ public class TicTacToe{
     private int player;
     private int winner;
     private boolean gameover;
+    private int movesleft;
 
     public TicTacToe(){
         this.grid = new int[3][3];
@@ -17,6 +18,7 @@ public class TicTacToe{
         this.player = this.X;
         this.winner = this.EMPTY;
         this.gameover = false;
+        this.movesleft = 9;
     }
 
     public boolean gameOver(){
@@ -30,6 +32,8 @@ public class TicTacToe{
         this.grid[x][y] = this.player;
 
         this.checkGameOver();
+
+        if (--this.movesleft == 0) this.gameover = true;
 
         this.nextTurn();
     }
