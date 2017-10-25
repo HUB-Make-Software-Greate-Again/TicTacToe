@@ -19,6 +19,10 @@ repositories {
     jcenter()
 }
 
+sourceSets {
+    selenium
+}
+
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:22.0'
@@ -28,9 +32,26 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+    
+    testCompile 'org.testng:testng:6.10'
+    
+    seleniumCompile 'junit:junit:4.12'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:3.6.0'
 }
 
+test.useTestNG()
+
 task stage (dependsOn: ['installDist'])
+
+task selenium(type: Test, dependsOn: installDist) {
+  testClassesDir = sourceSets.selenium.output.classesDir
+  classpath = sourceSets.selenium.runtimeClasspath
+
+  doFirst {
+    'build/install/TicTacToe/bin/TicTacToe.bat'.execute()
+  }
+}
+
 
 mainClassName = 'is.ru.hugb.App'
 
