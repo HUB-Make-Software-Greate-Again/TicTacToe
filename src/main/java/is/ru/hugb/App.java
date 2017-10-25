@@ -8,6 +8,7 @@ public class App
 
     public static void main(String[] args){
         staticFiles.location("/public");
+        port(readPortOrDefault());        
         
         post("/game", (req, res) -> {
             // If request doesn't have x & y params, return error
@@ -41,4 +42,12 @@ public class App
             return "OK";
         });
     }
+
+    static int readPortOrDefault() {
+        ProcessBuilder psb = new ProcessBuilder();
+        if (psb.environment().get("PORT") != null) {
+          return Integer.parseInt(psb.environment().get("PORT"));
+        }
+        return 4567;
+      }
 }
