@@ -1,15 +1,13 @@
 package is.ru.hugb;
 
 import static spark.Spark.*;
+import org.flywaydb.core.Flyway;
 
 public class App
 {
     private static final String GAME = "tictactoe_instance";
 
-    public static void main(String[] args){
-        staticFiles.location("/public");
-        port(readPortOrDefault());        
-        
+    private static void serve(){
         post("/game", (req, res) -> {
             // If request doesn't have x & y params, return error
             if (req.session().attribute(GAME) == null){
@@ -41,6 +39,18 @@ public class App
 
             return "OK";
         });
+    }
+
+    public static void main(String[] args){
+        staticFiles.location("/public");
+        port(readPortOrDefault());     
+
+        Flyway flyway = new Flyway();
+        flyway.setDataSource("jdbc:postgresql://localhost:5432/development_tictactoe", "unnsteinn", null);
+        flyway.migrate();
+
+        serve();   
+        
     }
 
     static int readPortOrDefault() {
