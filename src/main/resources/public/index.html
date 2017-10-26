@@ -1,11 +1,35 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="tictac.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-    Hello World!
+    <button id="reset">Reset</button>
+    <div id="container">
+        <h1>TIC TAC TOE</h1> 
+        <table id="board" class="board">
+            <tr>
+                <td x="0" y="0" class="button field" id="one" ></td>
+                <td x="0" y="1" class="button field" id="two"></td>
+                <td x="0" y="2" class="button field" id="three"></td>
+            </tr>
+            <tr>
+                <td x="1" y="0" class="button field" id="four"></td>
+                <td x="1" y="1" class="button field" id="five"></td>
+                <td x="1" y="2" class="button field" id="six"></td>
+            </tr>
+            <tr>
+                <td x="2" y="0" class="button field" id="seven"></td>
+                <td x="2" y="1" class="button field" id="eight"></td>
+                <td x="2" y="2" class="button field" id="nine"></td>
+            </tr>
+        </table>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
