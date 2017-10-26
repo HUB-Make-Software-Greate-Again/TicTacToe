@@ -1,29 +1,32 @@
 var value = true;
+var playerOne = "X";
+var playerTwo = "O";
 
 $(".button").on('click', function(e){
-    document.getElementById(this.id).removeEventListener("click", setValue, false);
-
     var my_x = this.attributes.x.value;
     var my_y = this.attributes.y.value;
-    var winner;
+
+    this.innerHTML = player();
+    value = !value;
 
     $.post("/game", {
         x: my_x,
         y: my_y
     }).done(function(response){
         console.log(response);
-
     }).fail(function(response){
         console.log(response);
-    })
+    });
+
+    $(this).removeClass("field").off("click").off("mouseover").off("mouseout");
 });
 
-$(".button").on("mouseover", function(e){
-    console.log("hovering");
+$(".field").on("mouseover", function(e){
+    this.innerHTML = player();
 });
 
-$(".button").on("mouseout", function(e){
-    console.log("Exiting");
+$(".field").on("mouseout", function(e){
+    this.innerHTML = "";
 });
 
 $("#reset").on("click", function(e){
@@ -36,16 +39,6 @@ $("#reset").on("click", function(e){
     });
 })
 
-function setValue(buttonID) {
-    if(!document.getElementById(buttonID).classList.contains("clicked")){
-        if(value){
-            document.getElementById(buttonID).innerHTML = "X";
-            value = false;
-        }
-        else{
-            document.getElementById(buttonID).innerHTML = "O";
-            value = true;
-        }
-        document.getElementById(buttonID).classList.add("clicked");
-    }
+function player(){
+    return value ? playerOne : playerTwo;
 }
