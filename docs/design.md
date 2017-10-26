@@ -16,7 +16,7 @@ Verkefnið er unnið í sjö fartölvum, sex sem keyra á Windows og eina sem ke
 
 ## Kóðareglur
 
-#Nafngiftir
+# Nafngiftir
 Notast verður við Test-Driven Development við forritun á bakenda. Hér verða listaðar upp Java og almennar reglur.
 * Öll breytunöfn skulu vera á ensku.
 * Nafngiftir á klösum, breytum og föllum skulu vera lýsandi frekar en mikið af athugasemdum, leitast skal við að gera nafngiftir sem skiljanlegastar. Forðast skal nögn eins og "number" eða "temp" og notast frekar við lýsandi nöfn líkt og "numberOfElements" eða "counterPlaceholder".
@@ -29,35 +29,35 @@ Notast verður við Test-Driven Development við forritun á bakenda. Hér verð
 * Public klasabreytur skulu byrja á stórum staf.
 * Slaufusvigar skulu ekki opnast í sér línu.
 
-#inndráttur og bil
+# inndráttur og bil
 * Bil skal setja á milli allra breytunafna, virkja (e. Operators) og gilda.
 * Inndráttur skal vera fjögur bil
 * Eitt línubil skal aðskilja breytu skilgreiningar og falla skilgreiningu eða falla-köll.
 * Eitt línubil skal aðskilja föll sem koma hvort á eftir öðru.
 * Alla jafna skal ekki setja meira en eitt línubil á milli atriða í kóðanum.
 
-#Klasar
+# Klasar
 * Klasabreytur skulu vera skilgreindar efst í klasanum og eitt línubil skal aðskilja breytulistann og falla skilgreiningar.
 
-#Athugasemdir
+# Athugasemdir
 * Athugasemdir við kóða skulu vera með sama inndrátt og kóðinn sem athugasemd á við.
 * Alla jafna skulu athugasemdir koma fyrir ofan það sem að athugasemd á við um.
 * Leitast skal eftir því að hafa lýsandi nöfn á klasa, breytu og falla heitum í stað athugasemda. Ef athugasemd er þörf og er mjög stutt og á bara við eina línu má setja hana í sömu línu og kóðinn.
 * Fyrir ofan alla klasa skal vera sett stutt lýsing um tilgang og virkni klasans.
 
-#Staðsetning slaufusviga
+# Staðsetning slaufusviga
 * Slaufusvigar skulu alla jafna ekki opnast í sér línu og loka skal slaufusvigum á línubilinu eftir síðustu línu í kóða.
 
-#HTML
+# HTML
 * Öll tög og eigindi skulu vera rituð í lágstöfum.
 * Öllum töfum skal vera lokað á viðeigandi hátt.
 * Öll eigindi skulu vera umlukin tvöföldum gæsalöppum.
 * Öllum útlits stillingum skal komið fyrir í CSS skrám en ekki í HTML tögum. 
 * Notast skal við HTML5.
 
-#CSS
+# CSS
 * Allur CSS kóði verður skrifaður í sér skrá.
 * Litir skulu vera skilgreindir í RGB formi.
 
-#JavaScript
+# JavaScript
 * Allur JavaScript kóði verður skrifaður í sér skrá.
