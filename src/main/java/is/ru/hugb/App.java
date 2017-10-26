@@ -48,19 +48,18 @@ public class App
         Flyway flyway = new Flyway();
         try{
             String url = System.getenv("DATABASE_URL");
-
             System.out.println(url);
             URI uri = new URI(url);
             System.out.println(uri.getUserInfo());
             String username = uri.getUserInfo().split(":")[0];
             String password = uri.getUserInfo().split(":")[1];
-            url = "jdbc:" + url;
+            url = "jdbc:postgresql://" + uri.getHost() + ':' + uri.getPort() + uri.getPath();
+            // jdbc:postgresql://localhost:5432/development_tictactoe
             System.out.println(url);
             flyway.setDataSource(url, username, password);
             flyway.clean();
             flyway.migrate();
             return DriverManager.getConnection(url, username, password);
-            
         }
         catch(URISyntaxException e){
             e.printStackTrace();
