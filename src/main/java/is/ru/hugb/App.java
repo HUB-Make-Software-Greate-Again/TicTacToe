@@ -2,6 +2,9 @@ package is.ru.hugb;
 
 import static spark.Spark.*;
 import org.flywaydb.core.Flyway;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.*;
 
 public class App
 {
@@ -41,16 +44,38 @@ public class App
         });
     }
 
-    public static void main(String[] args){
+    private static Connection getConnection() throws URISyntaxException, SQLException{
+        Flyway flyway = new Flyway();
+        try{
+            String url = System.getenv("DATABASE_URL");
+
+            System.out.println(url);
+            URI uri = new URI(url);
+            System.out.println(uri.getUserInfo());
+            String username = uri.getUserInfo().split(":")[0];
+            String password = uri.getUserInfo().split(":")[1];
+            url = "jdbc:" + url;
+            System.out.println(url);
+            flyway.setDataSource(url, username, password);
+            flyway.clean();
+            flyway.migrate();
+            return DriverManager.getConnection(url, username, password);
+            
+        }
+        catch(URISyntaxException e){
+            e.printStackTrace();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static void main(String[] args) throws URISyntaxException, SQLException{
         staticFiles.location("/public");
         port(readPortOrDefault());     
-
-        Flyway flyway = new Flyway();
-        flyway.setDataSource("jdbc:postgresql://localhost:5432/development_tictactoe", "unnsteinn", null);
-        flyway.migrate();
-
+        getConnection();
         serve();   
-        
     }
 
     static int readPortOrDefault() {
