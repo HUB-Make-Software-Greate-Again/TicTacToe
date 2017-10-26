@@ -1,6 +1,7 @@
 package is.ru.hugb;
 
 import static spark.Spark.*;
+import org.json.JSONObject;
 
 public class App
 {
@@ -33,13 +34,16 @@ public class App
                 return String.format("Illegal move, %s", e.getMessage());
             }
 
+            JSONObject response = new JSONObject();
+            response.put("status", "ok");
+
             if (game.gameOver()){
-                String response = String.format("Game over, winner is %d", game.winner());
+                response.put("winner", game.winner());
                 req.session().attribute(GAME, new TicTacToe());
-                return response;
             } 
 
-            return "OK";
+            res.type("application/json");
+            return response.toString();
         });
 
         post("/reset", (req, res) -> {
