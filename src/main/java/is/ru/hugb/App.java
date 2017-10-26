@@ -1,15 +1,16 @@
 package is.ru.hugb;
 
 import static spark.Spark.*;
+import org.flywaydb.core.Flyway;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.*;
 
 public class App
 {
     private static final String GAME = "tictactoe_instance";
 
-    public static void main(String[] args){
-        staticFiles.location("/public");
-        port(readPortOrDefault());        
-        
+    private static void serve(){
         post("/game", (req, res) -> {
             // If request doesn't have x & y params, return error
             if (req.session().attribute(GAME) == null){
@@ -41,6 +42,40 @@ public class App
 
             return "OK";
         });
+    }
+
+    private static Connection getConnection() throws URISyntaxException, SQLException{
+        Flyway flyway = new Flyway();
+        try{
+
+            String url = System.getenv("DATABASE_URL");
+            URI uri = new URI(url);
+            String username = uri.getUserInfo().split(":")[0];
+            String password = uri.getUserInfo().split(":")[1];
+            url = "jdbc:postgresql://" + uri.getHost() + ':' + uri.getPort() + uri.getPath();
+            if(!url.contains("localhost")){
+                url += "?sslmode=require";
+            }
+            flyway.setDataSource(url, username, password);
+            // remove clean when finished
+            flyway.clean();
+            flyway.migrate();
+            return DriverManager.getConnection(url, username, password);
+        }
+        catch(URISyntaxException e){
+            e.printStackTrace();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static void main(String[] args) throws URISyntaxException, SQLException{
+        staticFiles.location("/public");
+        port(readPortOrDefault());     
+        getConnection();
+        serve();   
     }
 
     static int readPortOrDefault() {
