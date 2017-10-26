@@ -41,6 +41,11 @@ public class App
 
             return "OK";
         });
+
+        post("/reset", (req, res) -> {
+            req.session().attribute(GAME, new TicTacToe());
+            return "foo";
+        });
     }
 
     static int readPortOrDefault() {
