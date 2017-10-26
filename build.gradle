@@ -28,6 +28,7 @@ dependencies {
     compile 'com.google.guava:guava:22.0'
     compile 'com.sparkjava:spark-core:2.6.0'
     compile 'com.heroku.sdk:heroku-jdbc:0.1.1'
+    compile 'org.json:json:20171018'
 
 
     // Use JUnit test framework

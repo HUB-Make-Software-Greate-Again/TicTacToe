@@ -1,6 +1,7 @@
 package is.ru.hugb;
 
 import static spark.Spark.*;
+import org.json.JSONObject;
 
 public class App
 {
@@ -15,6 +16,8 @@ public class App
             if (req.session().attribute(GAME) == null){
                 req.session().attribute(GAME, new TicTacToe());
             }
+            JSONObject response = new JSONObject();
+            res.type("application/json");
 
             int x = 0, y = 0;
 
@@ -22,7 +25,9 @@ public class App
                 x = Integer.parseInt(req.queryParams("x"));
                 y = Integer.parseInt(req.queryParams("y"));
             } catch (Exception e){
-                return String.format("There was an error with the query parameters, expecting x and y as numbers. %s", e.getMessage());
+                res.status(422);
+                response.put("error", String.format("There was an error with the query parameters, expecting x and y as numbers. %s", e.getMessage()));
+                return response.toString();
             }
 
             TicTacToe game = req.session().attribute(GAME);
@@ -30,16 +35,24 @@ public class App
             try {
                 game.doMove(x, y);
             } catch (IllegalArgumentException e){
-                return String.format("Illegal move, %s", e.getMessage());
+                res.status(422);
+                response.put("error", String.format("Illegal move, %s", e.getMessage()));
+                return response.toString();
             }
 
+            response.put("status", "ok");
+
             if (game.gameOver()){
-                String response = String.format("Game over, winner is %d", game.winner());
+                response.put("winner", game.winner());
                 req.session().attribute(GAME, new TicTacToe());
-                return response;
             } 
 
-            return "OK";
+            return response.toString();
+        });
+
+        post("/reset", (req, res) -> {
+            req.session().attribute(GAME, new TicTacToe());
+            return "foo";
         });
     }
 
