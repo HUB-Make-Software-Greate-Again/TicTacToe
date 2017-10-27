@@ -27,7 +27,8 @@ dependencies {
     compile 'com.heroku.sdk:heroku-jdbc:0.1.1'
     compile 'org.flywaydb:flyway-core:4.2.0'
     compile 'org.postgresql:postgresql:42.1.4'
-    
+    compile 'org.json:json:20171018'
+
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
 }

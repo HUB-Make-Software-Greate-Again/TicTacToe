@@ -119,6 +119,40 @@ public class TicTacToeTest{
         assertEquals(game.winner(), 0);
     }
 
+    @Test
+    public void testGameOverIsTrueWhenThereIsDraw(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 0);
+        game.doMove(0, 2);
+        game.doMove(0, 1);
+        game.doMove(1, 0);
+        game.doMove(1, 1);
+        game.doMove(2, 1);
+        game.doMove(1, 2);
+        game.doMove(2, 2);
+        game.doMove(2, 0);
+
+        assertTrue(game.gameOver());
+    }
+
+    @Test
+    public void testWinnerReturnsZeroWhenThereIsDraw(){
+        TicTacToe game = new TicTacToe();
+
+        game.doMove(0, 0);
+        game.doMove(0, 2);
+        game.doMove(0, 1);
+        game.doMove(1, 0);
+        game.doMove(1, 1);
+        game.doMove(2, 1);
+        game.doMove(1, 2);
+        game.doMove(2, 2);
+        game.doMove(2, 0);
+
+        assertEquals(game.winner(), 0);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testIllegalRowBelowZero(){
         TicTacToe game = new TicTacToe();

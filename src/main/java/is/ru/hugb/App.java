@@ -47,7 +47,6 @@ public class App
     private static Connection getConnection() throws URISyntaxException, SQLException{
         Flyway flyway = new Flyway();
         try{
-
             String url = System.getenv("DATABASE_URL");
             URI uri = new URI(url);
             String username = uri.getUserInfo().split(":")[0];
