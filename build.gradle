@@ -6,6 +6,7 @@
  * user guide available at https://docs.gradle.org/4.2.1/userguide/tutorial_java_projects.html
  */
 
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -28,8 +29,9 @@ dependencies {
     compile 'com.google.guava:guava:22.0'
     compile 'com.sparkjava:spark-core:2.6.0'
     compile 'com.heroku.sdk:heroku-jdbc:0.1.1'
+    compile 'org.flywaydb:flyway-core:4.2.0'
+    compile 'org.postgresql:postgresql:42.1.4'
     compile 'org.json:json:20171018'
-
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
