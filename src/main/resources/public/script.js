@@ -63,12 +63,10 @@ function startGame(){
 
 startGame();
 
-$("#reset").on("click", function(e){
-    e.preventDefault();
-
+$(window).on('load', function(){    
     $.post("/reset").done(function(res){
         console.log("reset");
     }).fail(function(res){
         console.log("fail");
     });
-})
+});
