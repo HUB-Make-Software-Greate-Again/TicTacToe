@@ -136,7 +136,7 @@ public class AppTest extends SeleniumTestWrapper {
   }
 
   @Test
-  public void testOWinsHorizontalSecondRow() throws Exception {
+  public void testXWinsHorizontalSecondRow() throws Exception {
     driver.get(baseUrl);
     // X
     WebElement el = driver.findElement(By.id("one"));
@@ -159,6 +159,56 @@ public class AppTest extends SeleniumTestWrapper {
     el.click();
     el = driver.findElement(By.cssSelector("#information p"));
     assertEquals("winner is: O", el.getText());
+    el = driver.findElement(By.id("newGame"));
+    el.click();
+  }
+
+  @Test
+  public void testXWinsHorizontalThirdRow() throws Exception {
+    driver.get(baseUrl);
+    // X
+    WebElement el = driver.findElement(By.id("seven"));
+    el.click();
+    assertEquals(el.getText(), "X");
+    // O
+    el = driver.findElement(By.id("one"));
+    el.click();
+    // X
+    el = driver.findElement(By.id("eight"));
+    el.click();
+    // O
+    el = driver.findElement(By.id("two"));
+    el.click();
+    // X
+    el = driver.findElement(By.id("nine"));
+    el.click();
+    el = driver.findElement(By.cssSelector("#information p"));
+    assertEquals("winner is: X", el.getText());
+    el = driver.findElement(By.id("newGame"));
+    el.click();
+  }
+
+  @Test
+  public void testXDiagonalDown() throws Exception {
+    driver.get(baseUrl);
+    // X
+    WebElement el = driver.findElement(By.id("one"));
+    el.click();
+    assertEquals(el.getText(), "X");
+    // O
+    el = driver.findElement(By.id("two"));
+    el.click();
+    // X
+    el = driver.findElement(By.id("five"));
+    el.click();
+    // O
+    el = driver.findElement(By.id("six"));
+    el.click();
+    // X
+    el = driver.findElement(By.id("nine"));
+    el.click();
+    el = driver.findElement(By.cssSelector("#information p"));
+    assertEquals("winner is: X", el.getText());
     el = driver.findElement(By.id("newGame"));
     el.click();
   }
