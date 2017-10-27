@@ -51,7 +51,9 @@ public class App
         });
 
         post("/reset", (req, res) -> {
-            req.session().attribute(GAME, new TicTacToe());
+            TicTacToe game = req.session().attribute(GAME);
+            game = null;
+            req.session().removeAttribute(GAME);    
             return "foo";
         });
     }
