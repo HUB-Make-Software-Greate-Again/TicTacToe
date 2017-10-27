@@ -109,4 +109,29 @@ public class AppTest extends SeleniumTestWrapper {
     el = driver.findElement(By.id("newGame"));
     el.click();
   }
+
+  @Test
+  public void testOWinsHorizontalFirstRow() throws Exception {
+    driver.get(baseUrl);
+    // X
+    WebElement el = driver.findElement(By.id("one"));
+    el.click();
+    assertEquals(el.getText(), "X");
+    // O
+    el = driver.findElement(By.id("four"));
+    el.click();
+    // X
+    el = driver.findElement(By.id("two"));
+    el.click();
+    // O
+    el = driver.findElement(By.id("five"));
+    el.click();
+    // X
+    el = driver.findElement(By.id("three"));
+    el.click();
+    el = driver.findElement(By.cssSelector("#information p"));
+    assertEquals("winner is: X", el.getText());
+    el = driver.findElement(By.id("newGame"));
+    el.click();
+  }
 }
