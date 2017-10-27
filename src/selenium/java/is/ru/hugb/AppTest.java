@@ -26,9 +26,9 @@ public class AppTest extends SeleniumTestWrapper {
   @Test
   public void testDoSecondMove() throws Exception {
     driver.get(baseUrl);
-    WebElement el = driver.findElement(By.id("four"));
+    WebElement el = driver.findElement(By.id("two"));
     el.click();
-    el = driver.findElement(By.id("five"));
+    el = driver.findElement(By.id("one"));
     el.click();
     assertEquals("O", el.getText());
   }
@@ -36,10 +36,52 @@ public class AppTest extends SeleniumTestWrapper {
   @Test
   public void testClickingSameButtonTwice() throws Exception {
     driver.get(baseUrl);
-    WebElement el = driver.findElement(By.id("one"));
+    WebElement el = driver.findElement(By.id("two"));
     el.click();
     assertEquals("X", el.getText());
     el.click();
-    assertEquals("X", el.getText());    
+    assertEquals("X", el.getText());
+  }
+
+  @Test
+  public void testXWinsVerticalFirstColumn() throws Exception {
+    driver.get(baseUrl);
+    WebElement el = driver.findElement(By.id("one"));
+    el.click();
+    assertEquals(el.getText(), "X");
+    el = driver.findElement(By.id("two"));
+    el.click();
+    el = driver.findElement(By.id("four"));
+    el.click();
+    el = driver.findElement(By.id("five"));
+    el.click();
+    el = driver.findElement(By.id("seven"));
+    el.click();
+    el = driver.findElement(By.cssSelector("#information p"));
+    assertEquals("winner is: X", el.getText());
+    el = driver.findElement(By.id("newGame"));
+    el.click();
+  }
+
+  @Test
+  public void testOWinsVerticalSecondColumn() throws Exception {
+    driver.get(baseUrl);
+    WebElement el = driver.findElement(By.id("one"));
+    el.click();
+    assertEquals(el.getText(), "X");
+    el = driver.findElement(By.id("two"));
+    el.click();
+    el = driver.findElement(By.id("four"));
+    el.click();
+    el = driver.findElement(By.id("five"));
+    el.click();
+    el = driver.findElement(By.id("nine"));
+    el.click();
+    el = driver.findElement(By.id("eight"));
+    el.click();
+    el = driver.findElement(By.cssSelector("#information p"));
+    assertEquals("winner is: O", el.getText());
+    el = driver.findElement(By.id("newGame"));
+    el.click();
   }
 }
