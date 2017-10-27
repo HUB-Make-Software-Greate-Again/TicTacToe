@@ -1,6 +1,9 @@
 language: java
 deploy:
   provider: heroku
-  app: hugb-tictactoe
+  app: hugb-tictactoe-staging
+  on:
+    all_branches: true
   api_key:
     secure: ZRkpcDWYW5n3gWqRptybPya1K2JCSZu7kTVHnCps8V6mmw86G2C4mHnpDVPwgmysSPo7HBz5dNV1iRmhYh8rSj+C4XTVcy56JlzkpN+tBWUtLj5/3YGaFYg4gf9BZdT7dMRApCyLGlzrSQpZgBe1pZ1aDgmgJtbgTmCi5yyRPK82R7aPNJpoJnNqkMn31zubJG+FRzFZSZV72tMHed5sGz7jbE5M5RFBgQRKoJxI6+Nbhm5kMEZY3cSseEdNQs/2x4X4pLP6zYQ1RzqO4+RlGcvUy7HStxgc0Yc1+C9laUx+UjcgonLQJS/mTZ9TWKHgP5YNo5SyQ+OBNO2JXO+YPCkVANp+e55+9GYbzuEljnAnumGJLoG/R2tnqNgAuKIOCg/CV3dhp9VR0IIdstlZKEif0+j2VX9iIGz0jrsP3WFSH6c6fxAjYkUMq/5vexwVlRBVPt5qe3VU1j9uxCpxvLQeALdjTlIqJGVYIazdUtgbZsMJdDO5YrRW0srOM577/IBCVngssKxdSVf7yT9pghbxSXjRUnTCIROCkJ784onUJi6vtsZnHczJNgv5dqFk1KNSXMw3U+VMxpW69Nk3yNo+QFBjuXFHoejS6qyWt933l3EhMoDl0ADXwOytVuZhe1jn0QXF6uFpFDRG3GGT2ZaEl00U5E5snq/c2pMDHuY=
+after_deploy: ./gradlew seleniumXvfb
