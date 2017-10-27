@@ -14,15 +14,18 @@ function endGame(){
 
 function startGame(){
     value = true;
+
     $("td").addClass("button field");
     $(".button").on('click', function(e){
+        
         var my_x = this.attributes.x.value;
         var my_y = this.attributes.y.value;
-        
+        console.log(my_x, my_y);
         $.post("/game", {
             x: my_x,
             y: my_y
-        }).done(function(response){
+        }).then(function(response){
+            
             this.innerHTML = player();
             value = !value;
             if (response.hasOwnProperty("winner")){
@@ -46,7 +49,7 @@ function startGame(){
                 startGame();
             }
         }).fail(function(response){
-
+            
         });
     
         $(this).removeClass("field").off("click").off("mouseover").off("mouseout");
@@ -63,12 +66,10 @@ function startGame(){
 
 startGame();
 
-$("#reset").on("click", function(e){
-    e.preventDefault();
-
+$(window).on('load', function(){    
     $.post("/reset").done(function(res){
         console.log("reset");
     }).fail(function(res){
         console.log("fail");
     });
-})
+});
