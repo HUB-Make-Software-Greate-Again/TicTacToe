@@ -12,6 +12,10 @@ class DbWrapper
 {
     private Connection conn = null;
 
+    /**
+     * Constructor
+     * @param dns DNS connection string
+     */
     public DbWrapper(String dns){
         try {
             URI uri = new URI(dns);
@@ -30,6 +34,11 @@ class DbWrapper
         }
     }
 
+    /**
+     * Insert a winner into results table
+     * @param winner - 0 for draw, 1 for player one and 2 for playar 2
+     * @return void
+     */
     public void insert(int winner){
         String query = "INSERT INTO results(sid, created) VALUES(?, now());";
         try (PreparedStatement stmt = this.conn.prepareStatement(query)){
@@ -40,6 +49,13 @@ class DbWrapper
         }
     }
 
+    /**
+     * Migrate DB using flyway
+     * @param url
+     * @param user
+     * @param pass
+     * @return void
+     */
     private void migrate(String url, String user, String pass){
         Flyway flyway = new Flyway();
         flyway.setDataSource(url, user, pass);

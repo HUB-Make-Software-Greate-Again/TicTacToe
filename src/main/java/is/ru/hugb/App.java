@@ -2,16 +2,23 @@ package is.ru.hugb;
 
 import static spark.Spark.*;
 import org.json.JSONObject;
-import org.flywaydb.core.Flyway;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.sql.*;
 
+/**
+ * Main class of the application
+ */
 public class App
 {
+    /**
+     * String to identify a session's game
+     */
     private static final String GAME = "tictactoe_instance";
 
+    /**
+     * Start spark serve, lists spark routes
+     * @return void
+     */
     private static void serve(){
+        staticFiles.location("/public");
         DbWrapper db = new DbWrapper(System.getenv("DATABASE_URL"));
 
         post("/game", (req, res) -> {
@@ -60,12 +67,18 @@ public class App
         });
     }
     
-    public static void main(String[] args) throws URISyntaxException, SQLException{
-        staticFiles.location("/public");
+    /**
+     * Start spark server
+     */
+    public static void main(String[] args) {
         port(readPortOrDefault());     
         serve();   
     }
 
+    /**
+     * Get local or heroku port, depending on which environment is being run
+     * @return int - 4567 for local
+     */
     static int readPortOrDefault() {
         ProcessBuilder psb = new ProcessBuilder();
         if (psb.environment().get("PORT") != null) {
