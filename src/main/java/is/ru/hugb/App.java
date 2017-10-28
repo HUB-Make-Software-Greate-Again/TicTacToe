@@ -14,6 +14,16 @@ public class App
     private static final String GAME = "tictactoe_instance";
 
     /**
+     * String to identify error key in JSON response
+     */
+    private static final String ERROR = "error";
+
+    /**
+     * String to identify winner key in JSON response
+     */
+    private static final String WINNER = "winner";
+
+    /**
      * Start spark serve, lists spark routes
      * @return void
      */
@@ -28,7 +38,7 @@ public class App
 
             if (game == null || game.gameOver()){
                 res.status(400);
-                response.put("Error", String.format("A new game has not been started"));
+                response.put(ERROR, String.format("A new game has not been started"));
                 return response.toString();
             }
 
@@ -39,7 +49,7 @@ public class App
                 y = Integer.parseInt(req.queryParams("y"));
             } catch (Exception e){
                 res.status(422);
-                response.put("error", String.format("There was an error with the query parameters, expecting x and y as numbers. %s", e.getMessage()));
+                response.put(ERROR, String.format("There was an error with the query parameters, expecting x and y as numbers. %s", e.getMessage()));
                 return response.toString();
             }
 
@@ -47,12 +57,12 @@ public class App
                 game.doMove(x, y);
             } catch (IllegalArgumentException e){
                 res.status(422);
-                response.put("error", String.format("Illegal move, %s", e.getMessage()));
+                response.put(ERROR, String.format("Illegal move, %s", e.getMessage()));
                 return response.toString();
             }
 
             if (game.gameOver()){
-                response.put("winner", game.winner());
+                response.put(WINNER, game.winner());
                 db.insert(game.winner());
                 return response.toString();
             } 
