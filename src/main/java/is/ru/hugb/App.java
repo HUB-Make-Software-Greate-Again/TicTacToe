@@ -46,6 +46,7 @@ public class App
 
             if (game.gameOver()){
                 response.put("winner", game.winner());
+                db.insert(game.winner());
                 return response.toString();
             } 
 

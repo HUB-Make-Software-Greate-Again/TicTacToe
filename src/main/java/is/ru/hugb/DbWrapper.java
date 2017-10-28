@@ -30,10 +30,20 @@ class DbWrapper
         }
     }
 
+    public void insert(int winner){
+        String query = "INSERT INTO results(sid, created) VALUES(?, now());";
+        try (PreparedStatement stmt = this.conn.prepareStatement(query)){
+            stmt.setInt(1, winner);
+            stmt.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     private void migrate(String url, String user, String pass){
         Flyway flyway = new Flyway();
         flyway.setDataSource(url, user, pass);
-        flyway.clean();
+        // flyway.clean();
         flyway.migrate();
     }
 }
