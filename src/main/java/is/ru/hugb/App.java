@@ -12,13 +12,18 @@ public class App
     private static final String GAME = "tictactoe_instance";
 
     private static void serve(){
+        DbWrapper db = new DbWrapper(System.getenv("DATABASE_URL"));
+
         post("/game", (req, res) -> {
-            // If request doesn't have x & y params, return error
-            if (req.session().attribute(GAME) == null){
-                req.session().attribute(GAME, new TicTacToe());
-            }
             JSONObject response = new JSONObject();
             res.type("application/json");
+            TicTacToe game = req.session().attribute(GAME);
+
+            if (game == null || game.gameOver()){
+                res.status(400);
+                response.put("Error", String.format("A new game has not been started"));
+                return response.toString();
+            }
 
             int x = 0, y = 0;
 
@@ -31,8 +36,6 @@ public class App
                 return response.toString();
             }
 
-            TicTacToe game = req.session().attribute(GAME);
-
             try {
                 game.doMove(x, y);
             } catch (IllegalArgumentException e){
@@ -40,54 +43,25 @@ public class App
                 response.put("error", String.format("Illegal move, %s", e.getMessage()));
                 return response.toString();
             }
-            response.put("status", "ok");
 
             if (game.gameOver()){
                 response.put("winner", game.winner());
-                req.session().attribute(GAME, new TicTacToe());
                 return response.toString();
             } 
+
             return response.toString();
         });
 
         post("/reset", (req, res) -> {
-            TicTacToe game = req.session().attribute(GAME);
-            game = null;
-            req.session().removeAttribute(GAME);    
-            return "foo";
-        });
-    }
+            req.session().attribute(GAME, new TicTacToe());
 
-    private static Connection getConnection() throws URISyntaxException, SQLException{
-        Flyway flyway = new Flyway();
-        try{
-            String url = System.getenv("DATABASE_URL");
-            URI uri = new URI(url);
-            String username = uri.getUserInfo().split(":")[0];
-            String password = uri.getUserInfo().split(":")[1];
-            url = "jdbc:postgresql://" + uri.getHost() + ':' + uri.getPort() + uri.getPath();
-            if(!url.contains("localhost")){
-                url += "?sslmode=require";
-            }
-            flyway.setDataSource(url, username, password);
-            // remove clean when finished
-            flyway.clean();
-            flyway.migrate();
-            return DriverManager.getConnection(url, username, password);
-        }
-        catch(URISyntaxException e){
-            e.printStackTrace();
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-        return null;
+            return "OK";
+        });
     }
     
     public static void main(String[] args) throws URISyntaxException, SQLException{
         staticFiles.location("/public");
         port(readPortOrDefault());     
-        getConnection();
         serve();   
     }
 
