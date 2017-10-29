@@ -31,7 +31,7 @@ HTML reglur
 
 CSS reglur
 * Allur CSS kóði verður skrifaður í sér skrá
-* Litir skulu vera skilgreindir í...
+* Litir skulu vera skilgreindir í Hex
 * Klasar og ID skulu hafa nöfn sem eru lýsandi
 
 JavaScript reglur
