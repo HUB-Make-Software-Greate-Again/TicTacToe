@@ -68,7 +68,6 @@ public class TicTacToe{
      * Do a move 
      * @param x Row of move from 0-2
      * @param y Column of move from 0-2
-     * @return void
      */
     public void doMove(int x, int y){
         this.checkBoundaries(x, y);
@@ -93,7 +92,6 @@ public class TicTacToe{
 
     /**
      * Switch current player
-     * @return void
      */
     private void nextTurn(){
         this.player = (this.player == this.X ? this.O : this.X);
@@ -101,7 +99,6 @@ public class TicTacToe{
 
     /**
      * Check if game is over
-     * @return void
      */
     private void checkGameOver(){
         this.checkRows();        
@@ -111,7 +108,6 @@ public class TicTacToe{
 
     /**
      * Check diagonal rows for winner
-     * @return void 
      */
     private void checkDias(){
         // Check left diagonal
@@ -133,7 +129,6 @@ public class TicTacToe{
 
     /**
      * Check rows for winner
-     * @return void 
      */
     private void checkRows(){
         for (int i = 0; i < 3; ++i){
@@ -148,7 +143,6 @@ public class TicTacToe{
 
     /**
      * Check columns for winner
-     * @return void 
      */
     private void checkCols(){
         for (int i = 0; i < 3; ++i){
@@ -166,7 +160,6 @@ public class TicTacToe{
      * Throws IllegalArgumentException if x or y are outside of range
      * @param int x ID of row as 0-2
      * @param int y ID of column as 0-2
-     * @return void
      */
     private void checkBoundaries(int x, int y){
         if (x < 0 || y < 0 || x > 2 || y > 2){

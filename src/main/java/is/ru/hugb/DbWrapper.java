@@ -8,7 +8,7 @@ import java.net.URISyntaxException;
 /**
  * Wrapper for DB connection
  */
-class DbWrapper
+public class DbWrapper
 {
     private Connection conn = null;
 
@@ -37,7 +37,6 @@ class DbWrapper
     /**
      * Insert a winner into results table
      * @param winner - 0 for draw, 1 for player one and 2 for playar 2
-     * @return void
      */
     public void insert(int winner){
         String query = "INSERT INTO results(sid, created) VALUES(?, now());";
@@ -54,7 +53,6 @@ class DbWrapper
      * @param url
      * @param user
      * @param pass
-     * @return void
      */
     private void migrate(String url, String user, String pass){
         Flyway flyway = new Flyway();

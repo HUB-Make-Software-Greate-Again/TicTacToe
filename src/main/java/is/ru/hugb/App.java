@@ -25,7 +25,6 @@ public class App
 
     /**
      * Start spark serve, lists spark routes
-     * @return void
      */
     private static void serve(){
         staticFiles.location("/public");
@@ -75,10 +74,17 @@ public class App
 
             return "OK";
         });
+
+        get("/javadoc", (req, res) -> {
+            res.redirect("javadoc/");
+
+            return "";
+        });
     }
     
     /**
      * Start spark server
+     * @param args Doesn't use args 
      */
     public static void main(String[] args) {
         port(readPortOrDefault());     
