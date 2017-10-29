@@ -6,6 +6,7 @@
  * user guide available at https://docs.gradle.org/4.2.1/userguide/tutorial_java_projects.html
  */
 
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -19,18 +20,50 @@ repositories {
     jcenter()
 }
 
+sourceSets {
+    selenium
+}
+
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:22.0'
     compile 'com.sparkjava:spark-core:2.6.0'
     compile 'com.heroku.sdk:heroku-jdbc:0.1.1'
-
+    compile 'org.flywaydb:flyway-core:4.2.0'
+    compile 'org.postgresql:postgresql:42.1.4'
+    compile 'org.json:json:20171018'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+    
+    testCompile 'org.testng:testng:6.10'
+    
+    seleniumCompile 'junit:junit:4.12'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:3.6.0'
 }
 
+test.useTestNG()
+
 task stage (dependsOn: ['installDist'])
+
+task selenium(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.selenium.output.classesDir
+    classpath = sourceSets.selenium.runtimeClasspath
+
+    ant.condition(property: "os", value: "windows") { os(family: "windows") }
+    ant.condition(property: "os", value: "unix"   ) { os(family: "unix")    }
+
+    doFirst {
+        switch(ant.properties.os) {
+            case 'unix':
+                'build/install/TicTacToe/bin/TicTacToe &'.execute()
+                break
+            case 'windows':
+                'build\\install\\TicTacToe\\bin\\TicTacToe.bat'.execute()
+                break
+        }
+    }
+}
 
 mainClassName = 'is.ru.hugb.App'
 
