@@ -2,14 +2,14 @@ body {
     padding: 20px;
     text-align: center;
     color: #BFC9CA;
-    background: rgba(46, 54, 78, 0.945);
+    background: #2E364E;
     height: 80vh;
 }
 
 h1 {
     font-size: 300%;
     margin-bottom: 0.5em;
-    color: rgba(160, 239, 182, 0.7);
+    color: #A0EFB6;
     font-family: Helvetica, sans-serif;
     letter-spacing: 10px;
     padding-left: .5em;
@@ -40,33 +40,33 @@ p {
 }
 
 .board .field:hover {
-    color: rgba(160, 239, 182, 0.7);
+    color: #A0EFB6;
 }
 
 .board .field:active {
-    background: rgba(202, 117, 117, 0.459);
+    background: #CA7575;
 }
 
 .board #one,
 .board #two {
-    border-right: 2px solid rgb(27, 28, 29);
-    border-bottom: 2px solid rgb(27, 28, 29);
+    border-right: 2px solid #1B1C1D;
+    border-bottom: 2px solid #1B1C1D;
 }
 
 .board #three,
 .board #six {
-    border-bottom: 2px solid rgb(27, 28, 29);
+    border-bottom: 2px solid #1B1C1D;
 }
 
 .board #four,
 .board #five {
-    border-right: 2px solid rgb(27, 28, 29);
-    border-bottom: 2px solid rgb(27, 28, 29);
+    border-right: 2px solid #1B1C1D;
+    border-bottom: 2px solid #1B1C1D;
 }
 
 .board #seven,
 .board #eight {
-    border-right: 2px solid rgb(27, 28, 29);
+    border-right: 2px solid #1B1C1D;
 }
 
 .board .field.highlight {
