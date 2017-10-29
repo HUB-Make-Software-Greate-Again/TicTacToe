@@ -4,7 +4,7 @@
 Tilgangur þessarar skýrslu er að skýra uppbyggingu leiksins TicTacToe sem verið er að hanna. Skýrslan inniheldur lýsingu á rekstrar- og þróunarumhverfi og forritunarreglur við gerð TicTacToe.
 
 ## Rekstrarumhverfi
-Leikurinn er þróaður af nemendum í Háskólanum í Reykjavík og er seinni hluti af námskeiðinu Hugbúnaðarfræði. Leikurinn verður forritaður í java með Spark frameworkinu og mun notendaviðmót vera veflægt sem skrifað er í HTML, CSS og javaScript. JQuery verður notað til þess að senda AJAX-köll á bakenda.
+Leikurinn er þróaður af nemendum í Háskólanum í Reykjavík og er seinni hluti af námskeiðinu Hugbúnaðarfræði. Leikurinn verður forritaður í java með Spark frameworkinu og mun notendaviðmót vera veflægt sem skrifað er í HTML, CSS og JavaScript. JQuery verður notað til þess að senda AJAX-köll á bakenda.
 
 ## Þróunarumhverfi
 Verkefnið er unnið í sjö fartölvum, sex sem keyra á Windows og eina sem keyrir á iOS stýrikerfi. Hér förum við yfir þróunarumhverfi sem notuð eru við gerð leiksins.
