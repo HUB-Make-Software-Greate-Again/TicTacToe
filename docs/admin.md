@@ -1,4 +1,4 @@
-# Kerfisstjórnun handbók
+# Kerfisstjórnunar handbók
 Leiðbeiningar fyrir kerfisstjóra til þess að setja upp verkefnið á nýrri vél, keyra það og viðhalda því.
 
 ## Forkröfur
@@ -26,11 +26,11 @@ Næst er eftirfarandi skipun keyrð í CLI til að keyra upp kerfið:
 ```bash
 heroko apps:create 'productname-staging'
 ```
-það app er notað fyrir prufukeyrslur og prófanir.
-Næsta skref er að fara inn á Heroku heimasíðuna, nýskrá sig og bæta nýja verkefninu inn í nýtt _pipeline_ og velja að setja það inn sem _staging_.
+Það app er notað fyrir prufukeyrslur og prófanir.
+Næsta skref er að fara inn á [Heroku](https://www.heroku.com/) heimasíðuna, innskrá eða nýskrá sig og bæta nýja verkefninu inn í nýtt _pipeline_ og velja að setja það inn sem _staging_.
 
 ## Travis uppsetning
-Fyrsta skrefið er að fara inn á heimasíðu Travis og skrá sig inn með GitHub aðgangi.
+Fyrsta skrefið er að fara inn á heimasíðu [Travis](https://travis-ci.org/) og skrá sig inn með GitHub aðgangi.
 Næsta skref er að tengja nafnið á verkefninu við Travis aðganginn með því að setja nafnið á verkefninu (productname-staging) inn í .travis.yml skránna í _app_ undir _deploy_.
 Einnig þarf að bæta við _secret key_ en það er gert með því að keyra þessa skipun í CLI:
 ```bash
