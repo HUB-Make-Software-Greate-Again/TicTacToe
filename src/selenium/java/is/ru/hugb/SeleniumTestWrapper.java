@@ -6,12 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import java.net.URL;
-
 
 public abstract class SeleniumTestWrapper {
   static RemoteWebDriver driver;
@@ -19,8 +16,8 @@ public abstract class SeleniumTestWrapper {
   static String port;
   static DesiredCapabilities caps;
 
-  public static final String USERNAME = "saethor";
-  public static final String ACCESS_KEY = "58be9c4f-2748-40db-8860-dc19e569ac22";
+  public static final String USERNAME = System.getenv("SAUCE_USERNAME");
+  public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
   public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 
   @BeforeClass
