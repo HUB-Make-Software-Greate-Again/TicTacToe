@@ -1,27 +1,25 @@
 # Kerfisstjórnun handbók
+Leiðbeiningar fyrir kerfisstjóra til þess að setja upp verkefnið á nýrri vél, keyra það og viðhalda því.
 
-Til að setja upp verkefnið þarf að setja upp eftirfarandi:
-* Postgres
-* Heroku
-* Travis
+## Forkröfur
+Eftirfarandi þurfa að vera til staðar á tölvu sem ætlar að keyra verkefnið:
+1. Postgres
+2. Heroku
+3. Travis
 
-Svo þarf að sækja verkefnið frá GitHub frá þessari [slóð](https://github.com/HUB-Make-Software-Greate-Again/TicTacToe)
+## Uppsetning
+Sækja þarf verkefnið frá GitHub frá þessari [slóð](https://github.com/HUB-Make-Software-Greate-Again/TicTacToe)
  en einnig er hægt er að gera þessa skipun í CLI (command line interface)
  ```bash
 git clone https://github.com/HUB-Make-Software-Greate-Again/TicTacToe.git
 ```
 
- 
 Eftir að verkefnið hefur verið sótt þarf að setja upp gagnagrunn í Postgres, það er gert í gegnum CLI með þessari skipun:
 ```bash
 export DATABASE_URL=postgres://user:password@host:port/databasename 
 ```
 Næst er eftirfarandi skipun keyrð í CLI til að keyra upp kerfið:
-```bash
-gradle run
-eða
-./gradlew run
-```
+`gradle run` eða `./gradlew run`.
 
 ## Heroku uppsetning
 Í CLI er þessi skipun keyrð til þess að búa til nýtt app í Heroku:
