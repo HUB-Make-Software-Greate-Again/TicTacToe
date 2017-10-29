@@ -27,12 +27,13 @@ function startGame() {
     $(".button").on('click', function(e) {
         var my_x = this.attributes.x.value;
         var my_y = this.attributes.y.value;
+        this.innerHTML = player();
+        value = !value;
         $.post("/game", {
             x: my_x,
             y: my_y
         }).then(function(response) {
-            this.innerHTML = player();
-            value = !value;
+
             if (response.hasOwnProperty("winner")) {
                 endGame();
                 var winner = "winner is: ";
