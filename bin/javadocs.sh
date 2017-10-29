@@ -1,4 +1,4 @@
 #! /bin/bash
 ./gradlew javadoc
-rm -rf src/main/resources/public/javadoc
-mv build/docs/javadoc src/main/resources/public
+rm -rf build/resources/main/public/javadoc/
+mv build/docs/javadoc build/resources/main/public/
