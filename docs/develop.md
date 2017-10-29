@@ -1,18 +1,37 @@
-# Þróunarhandbók
-Það sem þarf til að setja upp verkefnið og keyra á nýrri vél:
+# Þróunarhandbók    
+Leiðbeiningar til þess að setja upp verkefnið á nýrri vél.
 
-* Aðgang að GitHub
-* Git Bash skel
-* Gradle
-* Java SE Development Kit
-* Postgres
+## Forkröfur
+Eftirfarandi þurfa að vera til staðar á tölvu sem ætlar að keyra verkefnið.
 
+1. Setja upp Java Development Kit
+2. Setja upp Postgres
+3. Setja upp GIT
 
+## Uppsetning
+Það sem þarf að gera til að keyra verkefnið er:
 
-Verkefni er geymt [hér](https://github.com/HUB-Make-Software-Greate-Again/TicTacToe) en hægt er að gera git clone á þessa [slóð](https://github.com/HUB-Make-Software-Greate-Again/TicTacToe.git) í gegnum git Bash.
+1. Sækja verkefnið á [github.com](https://github.com/HUB-Make-Software-Greate-Again/TicTacToe).
+2. Búa til notanda með lykilorð í postgres og búa til einhvern tóman gagnagrunn.
+3. Stilla umhverfisbreytuna `DATABASE_URL` sem DNS tengistreng á gagagrunninn.
+4. Keyra `./gradlew run`
 
-Eftir að verkefnið hefur verið klónað á heimasvæði eru eftirfarandi skipanir keyrðar:
-1. export DATABASE_URL=postgres://user:password@host:port/development_tictactoe
-2. gradle run
+Dæmi um stillingu á `DATABASE_URL`þar sem eftirfarandi er keyrt í skel:
+```bash 
+export DATABASE_URL=postgres://user:password@localhost:5432/tictactoe
+```
 
-Nú ætti allt að vera sett upp.
+## Prófanir
+Til þess að keyra Selenium prófanir þarf að stilla eftirfarandi umhverfisbreytur:
+1. `HEROKU_APP_NAME` Slóðin sem á að prófa gegn
+2. `SAUCE_USERNAME` Notendanafn á [Saucelabs](https://saucelabs.com)
+3. `SAUCE_ACCESS_KEY` Aðgangslykill á [Saucelabs](https://saucelabs.com)
+
+Til að keyra gegn `localhost` þá þarf að taka nokkur auka skref, sjá [hér](https://wiki.saucelabs.com/display/DOCS/Sauce+Connect+Proxy)
+
+Dæmi um stillingar á umhverfisbreytum í skel
+```bash
+export HEROKU_APP_NAME=host:port
+export SAUCE_USERNAME=foobar
+export SAUCE_ACCESS_KEY=ab3bara3-b864-b3d4-b751-po78f6foo133
+```
