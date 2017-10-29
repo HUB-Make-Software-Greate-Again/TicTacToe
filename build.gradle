@@ -65,21 +65,5 @@ task selenium(type: Test, dependsOn: installDist) {
     }
 }
 
-task seleniumXvfb(type: Test, dependsOn: installDist) {
-    testClassesDir = sourceSets.selenium.output.classesDir
-    classpath = sourceSets.selenium.runtimeClasspath
-
-    environment "DISPLAY", ":99"
-
-    doFirst {
-        'bin/xvfb start'.execute()
-        'build/install/TicTacToe/bin/TicTacToe &'.execute()
-    }
-    
-    doLast {
-        'bin/xvfb stop'.execute()
-    }
-}
-
 mainClassName = 'is.ru.hugb.App'
 
