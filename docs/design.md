@@ -3,10 +3,10 @@
 ## Inngangur
 Tilgangur þessarar skýrslu er að skýra uppbyggingu leiksins TicTacToe sem verið er að hanna. Skýrslan inniheldur lýsingu á rekstrar- og þróunarumhverfi og forritunarreglur við gerð TicTacToe.
 
-## Rekstrarumhverfi ##
-Leikurinn er þróaður af nemendum í Háskólanum í Reykjavík og er seinni hluti af námskeiðinu Hugbúnaðarfræði. Leikurinn verður forritaður í java með Spark frameworkinu og mun notendaviðmót vera veflægt sem skrifað er í HTML, CSS og javaScript. JQuery verður notað til þess að senda AJAX-köll á bakenda.
+## Rekstrarumhverfi
+Leikurinn er þróaður af nemendum í Háskólanum í Reykjavík og er seinni hluti af námskeiðinu Hugbúnaðarfræði. Leikurinn verður forritaður í java með Spark frameworkinu og mun notendaviðmót vera veflægt sem skrifað er í HTML, CSS og JavaScript. JQuery verður notað til þess að senda AJAX-köll á bakenda.
 
-## Þróunarumhverfi ##
+## Þróunarumhverfi
 Verkefnið er unnið í sjö fartölvum, sex sem keyra á Windows og eina sem keyrir á iOS stýrikerfi. Hér förum við yfir þróunarumhverfi sem notuð eru við gerð leiksins.
 * Notast er verður við Git-Flow vinnuflæði í Git
 * Verkefnið verður hýst á Heroku
@@ -16,7 +16,7 @@ Verkefnið er unnið í sjö fartölvum, sex sem keyra á Windows og eina sem ke
 
 ## Kóðareglur
 
-## Nafngiftir
+### Nafngiftir 
 Notast verður við Test-Driven Development við forritun á bakenda. Hér verða listaðar upp Java og almennar reglur.
 * Öll breytunöfn skulu vera á ensku.
 * Nafngiftir á klösum, breytum og föllum skulu vera lýsandi frekar en mikið af athugasemdum, leitast skal við að gera nafngiftir sem skiljanlegastar. Forðast skal nögn eins og "number" eða "temp" og notast frekar við lýsandi nöfn líkt og "numberOfElements" eða "counterPlaceholder".
@@ -29,7 +29,7 @@ Notast verður við Test-Driven Development við forritun á bakenda. Hér verð
 * Public klasabreytur skulu byrja á stórum staf.
 * Slaufusvigar skulu ekki opnast í sér línu.
 
-### inndráttur og bil
+### Inndráttur og bil
 * Bil skal setja á milli allra breytunafna, virkja (e. Operators) og gilda.
 * Inndráttur skal vera fjögur bil
 * Eitt línubil skal aðskilja breytu skilgreiningar og falla skilgreiningu eða falla-köll.
@@ -57,7 +57,7 @@ Notast verður við Test-Driven Development við forritun á bakenda. Hér verð
 
 ### CSS
 * Allur CSS kóði verður skrifaður í sér skrá.
-* Litir skulu vera skilgreindir í RGB formi.
+* Litir skulu vera skilgreindir á Hex formi.
 
 ### JavaScript
 * Allur JavaScript kóði verður skrifaður í sér skrá.

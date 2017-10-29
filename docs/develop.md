@@ -12,14 +12,17 @@ Eftirfarandi þurfa að vera til staðar á tölvu sem ætlar að keyra verkefni
 Það sem þarf að gera til að keyra verkefnið er:
 
 1. Sækja verkefnið á [github.com](https://github.com/HUB-Make-Software-Greate-Again/TicTacToe).
-2. Búa til notanda með lykilorð í postgres og búa til einhvern tóman gagnagrunn.
-3. Stilla umhverfisbreytuna `DATABASE_URL` sem DNS tengistreng á gagagrunninn.
+2. Búa til notanda með lykilorð í Postgres og búa til tóman gagnagrunn.
+3. Stilla umhverfisbreytuna (environment variable) `DATABASE_URL` sem DNS tengistreng á gagnagrunninn.
 4. Keyra `./gradlew run`
+5. Opna vafra og skrifa inn: `http://localhost:4567`
 
 Dæmi um stillingu á `DATABASE_URL`þar sem eftirfarandi er keyrt í skel:
 ```bash 
 export DATABASE_URL=postgres://user:password@localhost:5432/tictactoe
 ```
+
+
 
 ## Prófanir
 Til þess að keyra Selenium prófanir þarf að stilla eftirfarandi umhverfisbreytur:
